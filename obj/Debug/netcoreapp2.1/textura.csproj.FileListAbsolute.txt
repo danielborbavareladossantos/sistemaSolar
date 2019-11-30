@@ -1,0 +1,12 @@
+/Users/daniel/Documents/cg/trabalho/bin/Debug/netcoreapp2.1/textura.deps.json
+/Users/daniel/Documents/cg/trabalho/bin/Debug/netcoreapp2.1/textura.runtimeconfig.json
+/Users/daniel/Documents/cg/trabalho/bin/Debug/netcoreapp2.1/textura.runtimeconfig.dev.json
+/Users/daniel/Documents/cg/trabalho/bin/Debug/netcoreapp2.1/textura.dll
+/Users/daniel/Documents/cg/trabalho/bin/Debug/netcoreapp2.1/textura.pdb
+/Users/daniel/Documents/cg/trabalho/bin/Debug/netcoreapp2.1/documentação.XML
+/Users/daniel/Documents/cg/trabalho/obj/Debug/netcoreapp2.1/textura.csprojAssemblyReference.cache
+/Users/daniel/Documents/cg/trabalho/obj/Debug/netcoreapp2.1/textura.csproj.CoreCompileInputs.cache
+/Users/daniel/Documents/cg/trabalho/obj/Debug/netcoreapp2.1/textura.AssemblyInfoInputs.cache
+/Users/daniel/Documents/cg/trabalho/obj/Debug/netcoreapp2.1/textura.AssemblyInfo.cs
+/Users/daniel/Documents/cg/trabalho/obj/Debug/netcoreapp2.1/textura.dll
+/Users/daniel/Documents/cg/trabalho/obj/Debug/netcoreapp2.1/textura.pdb
