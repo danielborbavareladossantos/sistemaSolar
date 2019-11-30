@@ -16,8 +16,12 @@ namespace trabalho
   {
     //FIXME: precisei instalar $ brew install mono-libgdiplus
     Bitmap bitmap = new Bitmap("logoGCG.png");
+    private Transformacao4D matrizSol = new Transformacao4D();
     private Transformacao4D matrizTerra = new Transformacao4D();
     private Transformacao4D matrizLua = new Transformacao4D();
+
+    private int translacao = 0;
+    private int translacaoLua = 20;
     private Vector3 eye, at;
     private float far;
 
@@ -53,20 +57,25 @@ namespace trabalho
       at = new Vector3(0, 0, 0);
       far = 100.0f;
 
-      // Matriz terra
-      Transformacao4D matrizTranslate1 = new Transformacao4D();
-      matrizTranslate1.AtribuirTranslacao(10, 0, 0);
-      matrizTerra = matrizTranslate1.MultiplicarMatriz(matrizTerra);
-      Transformacao4D matrizScale = new Transformacao4D();
-      matrizScale.AtribuirEscala(1.5, 1.5, 1.5);
-      matrizTerra = matrizScale.MultiplicarMatriz(matrizTerra);
-    
-      // Matriz lua
-      Transformacao4D matrizTranslate2 = new Transformacao4D();
-      matrizTranslate2.AtribuirTranslacao(6, 0, 0);
-      matrizLua = matrizTranslate2.MultiplicarMatriz(matrizLua);
-      matrizTranslate2.AtribuirRotacaoY(Transformacao4D.DEG_TO_RAD * 20);
-      matrizLua = matrizTranslate2.MultiplicarMatriz(matrizLua);
+      // Matriz sol
+      Transformacao4D matrizSolNova = new Transformacao4D();
+      matrizSolNova.AtribuirTranslacao(40, 0, 0);
+      matrizSol = matrizSolNova.MultiplicarMatriz(matrizSol);
+      // Atribui filho terra ao sol
+      matrizTerra = matrizSol.MultiplicarMatriz(matrizTerra);
+
+      //cria terra
+      Transformacao4D matrizTerraNova = new Transformacao4D();
+      matrizTerraNova.AtribuirEscala(0.3, 0.3, 0.3);
+      matrizTerra = matrizTerraNova.MultiplicarMatriz(matrizTerra);
+      // Matriz atribui filho lua a terra
+      matrizLua = matrizTerra.MultiplicarMatriz(matrizLua);
+
+      //cria lua
+      Transformacao4D matrizLuaNova = new Transformacao4D();
+      matrizLuaNova.AtribuirEscala(0.1, 0.1, 0.1);
+      matrizLuaNova.AtribuirRotacaoY(Transformacao4D.DEG_TO_RAD * 20);
+      matrizLua = matrizLuaNova.MultiplicarMatriz(matrizLua);
 
     }
 
@@ -123,6 +132,14 @@ namespace trabalho
         GL.CullFace(CullFaceMode.Front);
       if (e.Key == Key.B)
         GL.CullFace(CullFaceMode.Back);
+      if (e.Key == Key.R) {
+        translacao++;
+        matrizTerra.AtribuirRotacaoY(translacao);
+      }
+      if (e.Key == Key.L) {
+        translacaoLua++;
+        matrizLua.AtribuirRotacaoY(translacaoLua);
+      }
       if (e.Key == Key.A)
         //FIXME: aqui deveria aplicar a textura no lado de fora e dentro, mas não aparece nada
         GL.CullFace(CullFaceMode.FrontAndBack);
